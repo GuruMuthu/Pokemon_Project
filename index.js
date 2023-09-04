@@ -1,8 +1,12 @@
 const Pokemon = document.getElementById("pokemon")
 Pokemon.style.display = "grid"
-Pokemon.style.gridTemplateColumns = "repeat(4,1fr)"
+Pokemon.style.gridTemplateColumns = "repeat(2,1fr)"
 Pokemon.style.gap = "10px"
 Pokemon.style.padding = "20px"
+
+let toUpperCaseName = (string)=>{
+    return string.charAt(0).toUpperCase()+string.slice(1);
+}
 
 let limit = 20;
 let offset = 0;
@@ -11,7 +15,7 @@ const Pokemons_card = (Pokemon)=>{
     const div = document.createElement("div")
     div.innerHTML = `
        <img style="height:55%; max-width:"200px"" src="${Pokemon.sprites.other.dream_world.front_default}" alt="${Pokemon.name}">
-       <h1>${Pokemon.name}</>
+       <h1>${toUpperCaseName(Pokemon.name)}</>
     `
     div.style.height = "350px"
     div.style.width = "300px"
@@ -65,9 +69,40 @@ const Next_Pokemons = () =>{
     PokemonData(api)
 }
 
-const Limit_Pokemon = ()=>{
-    Pokemon.innerHTML = ""
-    offset = limit
-    let api = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`.
-    PokemonData(api)
+
+
+// ----------------------------------------------------------------Search box code----------------------------------------------------------------------------
+
+
+
+document.querySelector("#search").addEventListener('click',getpokemon);
+
+const capitalizeFirstLetter = (string)=>{
+    return string.charAt(0).toUpperCase()+string.slice(1);
+}
+
+const pokemon_name_lowercase = (string)=>{
+    return string.toLowerCase();
+}
+
+function getpokemon(e){
+     const name = document.querySelector('#pokemon_name').value;
+    
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_name_lowercase(name)}`).then((res)=>res.json())
+    .then((data)=>{
+        document.querySelector('#pokemonbox').innerHTML=`
+        <div id='image'>
+           <img src="${data.sprites.other["official-artwork"].front_default}" alt="${capitalizeFirstLetter(data.name)}">
+        </div>
+       <div>
+           <h1>${capitalizeFirstLetter(data.name)}</h1>
+           <b id='h'>Height :${data.height}</b>
+           <b id='w'>Weight :${data.weight}</b>
+           <b id='be'>Base-Experience :${data.base_experience}</b>
+       </div>
+        `
+    }).catch((err)=>console.log(err));
+
+
+    e.preventDefault();
 }
