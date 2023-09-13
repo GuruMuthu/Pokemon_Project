@@ -92,9 +92,9 @@ function getpokemon(e){
     .then((data)=>{
         document.querySelector('#pokemonbox').innerHTML=`
         <div id='image'>
-           <img src="${data.sprites.other["official-artwork"].front_default}" alt="${capitalizeFirstLetter(data.name)}">
+           <img src="${data.sprites.other.dream_world.front_default}" alt="${capitalizeFirstLetter(data.name)}">
         </div>
-       <div>
+       <div id='details'>
            <h1>${capitalizeFirstLetter(data.name)}</h1>
            <b id='h'>Height :${data.height}</b>
            <b id='w'>Weight :${data.weight}</b>

@@ -8,6 +8,7 @@ body{
     padding-left: 100px;
 }
 #navbar{
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +58,19 @@ padding: 5px;
     border-radius: 10px;
     background-color: rgb(40, 235, 235);
 }
+#searchbox button:hover{
+    font-size: medium;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgb(3, 133, 133);
+}
+#searchbox input:hover{
+    font-size: medium;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color:rgb(2, 2, 49) ;
+}
 #main{
     position:sticky;
     top: 150px;
@@ -66,21 +80,27 @@ padding: 5px;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
+    border: 2px solid skyblue;
     box-shadow:5px 5px 2.5px rgb(20, 64, 82);
 }
 #image{
-    padding-top: 15px;
     box-shadow: 5px 5px 2.5px rgb(20, 64, 82);
     border-radius: 25px;
+    border: 2px solid skyblue;
 }
 #pokemonbox img{
     height: 300px;
+    padding: 10px;
+}
+#details{
+   padding-right: 2px;
 }
 #pokemonbox{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    margin-top: 25px;
 }
 #pokemonbox h1,#h,#w,#be{
     display: flex;
