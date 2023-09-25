@@ -118,7 +118,7 @@ padding: 5px;
 @media all and (max-width:460px){
     #navbar{
         height: 75px;
-        width: 1200px;
+        width: 1300px;
     }
     #main{
         position: sticky;
